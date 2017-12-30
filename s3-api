@@ -1,0 +1,8 @@
+http://blog.csdn.net/marvin198801/article/details/47662965
+(s3-style subdomain)
+Virtual Host: ${protocol}://${bucket}.s3.amazonaws.com/[${key}]
+(普通path url访问形式) 
+Path: ${protocol}://s3.amazonaws.com/${bucket}/[${key}]
+
+s3官方文档
+https://docs.aws.amazon.com/zh_cn/AmazonS3/latest/dev/Welcome.html
