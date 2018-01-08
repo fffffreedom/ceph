@@ -88,7 +88,7 @@ radosgw-admin quota set --quota-scope=user --uid=johndoe --max-objects=1024 --ma
 ### 启用/禁用用户配额
 ```
 radosgw-admin quota enable --quota-scope=user --uid=<uid>
-radosgw-admin quota-disable --quota-scope=user --uid=<uid>
+radosgw-admin quota disable --quota-scope=user --uid=<uid>
 ```
 ### 获取配额信息
 `radosgw-admin user info --uid=<uid>`
