@@ -1,4 +1,5 @@
 # docker-ceph-rbd
+https://github.com/yp-engineering/rbd-docker-plugin  
 ## install software
 ```
 1. 配置yum源
@@ -39,9 +40,25 @@ source ~/.bash_profile
 #  name = "golang.org/x/sys"
 #  packages = ["windows"]
 #  revision = "2d6f6f883a06fc0d5f4b14a81e4c28705ea64c15"
-然后运行make，编译成功后，会在dist目录下生成文件：
-# file dist/rbd-docker-plugin 
-dist/rbd-docker-plugin: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked (uses shared libs), not stripped
+然后运行make，编译成功后，会在dist目录下生成文件rbd-docker-plugin
 # cp dist/rbd-docker-plugin /root/go/bin
 ```
 ## 测试
+```
+1. 启动rbd-docker-plugin
+可使用手动启动：
+rbd-docker-plugin --create &
+或者配置serivce:
+https://github.com/yp-engineering/rbd-docker-plugin/blob/21b9c0080675e0f770f1079e139fedb099f2e40d/etc/systemd/rbd-docker-plugin.service
+2. 启动容器
+docker run --volume-driver=rbd -v imagename:/mnt/dir IMAGE [CMD]
+
+```
+## 问题
+```
+1. 确保创建rbd image的默认feature为1（rbd_default_features = 1），否则会因为功能不支持而出错；
+2. 
+```
+## reference
+http://www.sebastien-han.fr/blog/2015/08/17/getting-started-with-the-docker-rbd-volume-plugin/  
+http://blog.opskumu.com/rbd-docker-plugin.html  
