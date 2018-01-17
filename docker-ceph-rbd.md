@@ -1,5 +1,6 @@
 # docker-ceph-rbd
-https://github.com/yp-engineering/rbd-docker-plugin  
+## readme
+https://github.com/yp-engineering/rbd-docker-plugin 
 ## install software
 ```
 1. 配置yum源
@@ -44,20 +45,45 @@ source ~/.bash_profile
 # cp dist/rbd-docker-plugin /root/go/bin
 ```
 ## 测试
+rbd-docker-plugin的参数说明：
+```
+You can control the RBD Pool and initial Size using this syntax sugar:
+  foo@1024 => pool=rbd (default), image=foo, size 1GB
+  deep/foo => pool=deep, image=foo and default --size (20GB)
+  deep/foo@1024 => pool=deep, image=foo, size 1GB
+  pool must already exist
+```
 ```
 1. 启动rbd-docker-plugin
 可使用手动启动：
-rbd-docker-plugin --create &
+rbd-docker-plugin --create --remove delete &
 或者配置serivce:
-https://github.com/yp-engineering/rbd-docker-plugin/blob/21b9c0080675e0f770f1079e139fedb099f2e40d/etc/systemd/rbd-docker-plugin.service
+配置文件可在github上下载
+https://github.com/yp-engineering/rbd-docker-plugin/blob/21b9c0080675e0f770f1079e139fedb099f2e40d/
+etc/systemd/rbd-docker-plugin.service
 2. 启动容器
-docker run --volume-driver=rbd -v imagename:/mnt/dir IMAGE [CMD]
-
+docker run --rm --volume-driver=rbd -v imagename:/mnt/dir IMAGE [CMD]
+docker run命令中，如果指定了imagename，则容器删除后，rbd image不会被删除，
+如果不指定，则在容器退出时，会自动删除rbd image.
+# image会自动删除
+docker run --rm --volume-driver=rbd --volume /mnt -it busybox /bin/sh
+# image不会自动删除
+docker run --rm --volume-driver=rbd --volume foo:/mnt -it busybox /bin/sh
+docker run --rm --volume-driver=rbd --volume foo@1024:/mnt -it busybox /bin/sh
 ```
 ## 问题
 ```
 1. 确保创建rbd image的默认feature为1（rbd_default_features = 1），否则会因为功能不支持而出错；
-2. 
+2. 注意volume在容器退出后，自动删除的条件；
+3. 经常会碰到，暂时还不清楚原因
+2018/01/17 10:54:22 api.go:174: Entering go-plugins-helpers hostVirtualPath
+2018/01/17 10:54:22 driver.go:507: INFO: API Path request(foo) => /var/lib/docker-volumes/rbd/rbd/foo
+2018/01/17 10:54:22 api.go:160: Entering go-plugins-helpers mountPath
+2018/01/17 10:54:22 driver.go:309: INFO: API Mount(&{foo@1024 940ca729c9d6b64e659aa864cd4d2d5fa10187c7652d1520adee041cb39fe530})
+2018/01/17 10:54:22 driver.go:325: ERROR: locking RBD Image(foo): exit status 2
+2018/01/17 10:54:22 api.go:202: Entering go-plugins-helpers unmountPath
+2018/01/17 10:54:22 driver.go:525: INFO: API Unmount(&{foo@1024 940ca729c9d6b64e659aa864cd4d2d5fa10187c7652d1520adee041cb39fe530})
+2018/01/17 10:54:22 driver.go:545: WARN: Volume is not in known mounts: ignoring request to unmount: rbd/foo
 ```
 ## reference
 http://www.sebastien-han.fr/blog/2015/08/17/getting-started-with-the-docker-rbd-volume-plugin/  
