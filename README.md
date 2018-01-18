@@ -11,4 +11,5 @@ https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/3/pdf/adminis
 ### Red Hat Ceph Storage 3 Storage Strategies Guide
 https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/3/pdf/storage_strategies_guide/Red_Hat_Ceph_Storage-3-Storage_Strategies_Guide-en-US.pdf
 ### Red Hat Ceph Storage 3 Developer Guide
-https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/3/pdf/developer_guide/Red_Hat_Ceph_Storage-3-Developer_Guide-en-US.pdf
+https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/3/pdf/developer_guide/Red_Hat_Ceph_Storage-3-Developer_Guide-en-US.pdf  
+https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/2/pdf/developer_guide/Red_Hat_Ceph_Storage-2-Developer_Guide-en-US.pdf
