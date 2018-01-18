@@ -19,6 +19,6 @@ http://www.zphj1987.com/2016/04/19/inkscope%E5%AE%8C%E6%95%B4%E5%AE%89%E8%A3%85%
 
 ## 问题
 - ceph status界面显示的信息不全
-这是因为ceph使用的版本是Jewel，inkscope还不兼容！还和浏览器有关！详见下面的issue:  
+这是因为ceph使用的版本是Jewel，inkscope还不兼容！还和浏览器有关！经过合入master tag后的代码，firefox可以正常显示，而chrome则不行，不再搞下去了。。。问题说明详见下面的issue: 
 https://github.com/inkscope/inkscope/issues/83
 
