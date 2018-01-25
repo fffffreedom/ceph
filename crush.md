@@ -6,7 +6,7 @@
 - 使用编辑器编辑CRUSH map  
 `vim crushmap-decompile`
 - 重新编译这个新的CRUSH map  
-`shmap-decompile -o crushmap-compiled`
+`crushtool -c crushmap-decompile -o crushmap-compiled`
 - 将新的CRUSH map应用到ceph集群中  
 `ceph osd setcrushmap -i crushmap-compiled`
 - 修改ceph.conf文件并推送到各节点  
