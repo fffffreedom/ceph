@@ -32,6 +32,18 @@ host ceph-node-10-101-5-14 {
         item osd.17 weight 3.637
         #item osd.46 weight 0.417 <- 需要注释掉，并抽出来成为host，如下
 }
+root default {
+        id -1           # do not change unnecessarily
+        # weight 165.744
+        alg straw
+        hash 0  # rjenkins1
+        item ceph-node-10-101-5-13 weight 33.149 -> 32.733
+        item ceph-node-10-101-5-14 weight 33.149 -> 32.733
+        item ceph-node-10-101-5-15 weight 33.149 -> 32.733
+        item ceph-node-10-101-5-16 weight 33.149 -> 32.733
+        item ceph-node-10-101-5-17 weight 33.149 -> 32.733
+}
+
 ```
 添加下面的代码：  
 ```
