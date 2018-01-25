@@ -111,6 +111,10 @@ rule ssd-pool {
 ceph osd pool create default.rgw.buckets.index 256 256
 ceph osd pool set default.rgw.buckets.index crush_ruleset 1
 ```
+创建create default.rgw.buckets.data，使用sata pool:
+```
+ceph osd pool create default.rgw.buckets.data 1024 1024
+```
 创建好rgw后，创建s3用户，用s3cmd创建一个bucket：
 ```
 s3cmd mb s3://test
