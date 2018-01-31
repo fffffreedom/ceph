@@ -13,3 +13,6 @@ http://www.cnblogs.com/fczjuever/archive/2013/04/17/3026694.html
 /proc/sys/net/core/somaxconn  
 定义了系统中每一个端口最大的监听队列的长度，这是个全局的参数。  
 
+OpenResty  
+OpenResty® 是一款基于 NGINX 和 LuaJIT 的 Web 平台。  
+https://openresty.org/cn/  
