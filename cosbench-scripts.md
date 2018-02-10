@@ -5,7 +5,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <workload name="WORK-NAME" description="sample benchmark for s3">
 
-  <storage type="s3" config="accesskey=J06LELUFY3Q91CNITCU9;secretkey=7pj8fI1fKRz9NHR6IbXlFJf6uKa9YAg45UzntoOc;endpoint=http://storage.vivo.lan;path_style_access=true" />
+  <storage type="s3" config="accesskey=J06LELUFY3Q91CNITCU9;secretkey=7pj8fI1fKRz9NHR6IbXlFJf6uKa9YAg45UzntoOc;endpoint=http://storage.s3.lan;path_style_access=true" />
 
   <workflow>
 
