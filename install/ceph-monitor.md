@@ -1,10 +1,10 @@
 # 监控搭建说明
 
 ```
-prometheus
-alertmanager
-ceph_exporter
-grafana
+prom/alertmanager:v0.14.0
+prom/prometheus:v1.7.1
+digitalocean/ceph_exporter:1.1.0
+grafana/grafana:4.5.2
 ```
 
 ## 文件说明
