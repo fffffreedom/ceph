@@ -18,11 +18,11 @@ alert.rules
 ceph-alarm.py
 	对接线上告警中心脚本
 ceph-cluster.json
-	ceph监控的grafana界面配置
+	ceph集群监控的grafana界面配置
 docker-compose.yml
 	docker up -d
-host-10.101.5.22-ceph.json
-	ceph node的grafana界面配置
+host-node-ceph.json
+	ceph物理机grafana界面配置
 prometheus.yml
 	prometheus配置文件
 ```
@@ -96,7 +96,7 @@ Access: proxy
 
 ## osd监控步骤
 
-1. 安装telegraf-ceph-1.0-2018.1.10.x86_64.rpm  
+1. 安装telegraf-ceph-xxx.x86_64.rpm  
 
 2. 打开/etc/telegraf/telegraf.conf配置文件中配置项  
 ```
@@ -125,12 +125,12 @@ scrape_configs:
 
 6. 查看采集到的数据  
 ```
-http://10.101.19.181:9090/targets  
-http://10.101.5.22:9273/metrics  
+http://xxx:9090/targets  
+http://xxx:9273/metrics  
 ```
 
 7. 展示到grafana  
-创建新的Dashboard，导入配置模板host-10.101.5.22-ceph.json即可。  
+创建新的Dashboard，导入配置模板host-node-ceph.json即可。  
 
 【注意】需要根据node修改配置模板，即把ip改成osd的ip。
 
