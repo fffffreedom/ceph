@@ -76,6 +76,51 @@ scrape_configs:
 ```
  
 3. 配置好docker-compose.yml文件，docker-compose up -d
+```
+version: '2'
+
+services:
+  alertmanager:
+    image: prom/alertmanager:v0.14.0
+    container_name: alertmanager
+    volumes:
+        - /etc/localtime:/etc/localtime
+        - ./alertmanager/config.yml:/etc/alertmanager/config.yml
+    ports:
+        - '9093:9093'
+  prometheus:
+    image: prom/prometheus:v1.7.1
+    volumes:
+        - /etc/localtime:/etc/localtime
+        - ./prometheus_data:/prometheus
+        - ./prometheus.yml:/etc/prometheus/prometheus.yml
+        - ./alert.rules:/etc/prometheus/alert.rules
+    command:
+        - -config.file=/etc/prometheus/prometheus.yml
+        - -alertmanager.url=http://alertmanager:9093
+    links:
+        - alertmanager
+    ports:
+        - '9090:9090'
+  ceph-exporter:
+    image: digitalocean/ceph_exporter:1.1.0
+    volumes:
+        - /etc/ceph:/etc/ceph
+        - /etc/localtime:/etc/localtime
+    ports:
+        - '9128:9128'
+  grafana:
+    image: grafana/grafana:4.5.2
+    environment:
+        - GF_SECURITY_ADMIN_PASSWORD=test
+    volumes:
+        - ./grafana_data:/var/lib/grafana
+        - /etc/localtime:/etc/localtime
+    depends_on:
+        - prometheus
+    ports:
+        - "3000:3000"
+```
 
 4. 登录grafana界面（ip:3000），这里的ip为ceph-exporter配置的ip，admin/test
 
